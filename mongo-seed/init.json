@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Joe Smith",    
+    "age": 40,
+    "location": "Minnesota, USA"
+  },
+  {
+    "name": "Nat",
+    "age": 45,
+    "location": "Sydney, Australia"
+  }
+]

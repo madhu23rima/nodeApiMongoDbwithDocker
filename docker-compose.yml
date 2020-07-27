@@ -1,0 +1,30 @@
+version: "3"
+services:
+       user-admin-app:      
+           container_name: user-admin-app
+           image: user-admin-appi
+           restart: always
+           build: 
+            context: .
+            dockerfile: Dockerfile.yml
+           ports:
+             - "8081:3001"
+           links:
+             - mongo_user
+           environment: 
+            - MONGO_URL=mongodb://mongo_user:27017
+       mongo-seed:
+            build:
+             context: ./mongo-seed
+             dockerfile: Dockerfile.yml
+            links:
+                - mongo_user
+       mongo_user:
+             container_name: mongo_user
+             image: mongo
+             volumes:
+              - mongodata:/data/db
+             ports:
+               - '27018:27017'      
+volumes: 
+      mongodata: 
